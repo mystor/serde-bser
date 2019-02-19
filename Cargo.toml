@@ -1,0 +1,11 @@
+[package]
+name = "serde-bser"
+version = "0.1.0"
+authors = ["Nika Layzell <nika@thelayzells.com>"]
+edition = "2018"
+
+[dependencies]
+serde = "1.0"
+byteorder = "1.0"
+itoa = "0.4"
+
