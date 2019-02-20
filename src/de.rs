@@ -111,7 +111,7 @@ where
     #[inline]
     fn expect_tag(&mut self, tag: Tag, exp: &Expected) -> Result<()> {
         let actual = self.read_tag()?;
-        if actual != tag {
+        if actual == tag {
             Ok(())
         } else {
             self.bad_tag(actual, exp)
@@ -974,7 +974,7 @@ impl<'de> io::Read for SliceRead<'de> {
         let rest = &self.slice[self.index..];
 
         let amt = cmp::min(buf.len(), rest.len());
-        buf[..amt].copy_from_slice(rest);
+        buf[..amt].copy_from_slice(&rest[..amt]);
 
         self.index += amt;
         Ok(amt)
